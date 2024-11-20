@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block cuerpo  %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+<h2>Editar producto</h2>
+<!--aquí codigo tarjeta-->
+<!--editassssss-->
+<div class="card">
+    <div class="card-body">
+        <form action="/editarproducto/" method="POST">{% csrf_token %}  <!--falta accion-->
+            <div class="form-group">
+                <input type="text" id="txtcod" name="txtcod" class="form-control" placeholder="codigo coordinador" minlenght="6" maxLenght="6" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtnombre" name="txtnombre"class="form-control" placeholder="nombre coordinador"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtzona" name="txtzona"class="form-control" placeholder="zona"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtdire" name="txtdire" class="form-control" placeholder="direccion"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtapell" name="txtapell" class="form-control" placeholder="apellidos"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="numsueldo" name="numsueldo" class="form-control" placeholder="saldo"   maxLenght="100" required>
+            </div>
+            
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">guardar coordinador</button>
+            </div>
+        </form>
+    
+    </div>
+</div><!--la tarjeta-->
+<!--aquí codigo tarjeta-->
+    </div>
+</div>
+
+
+{% endblock  %}
