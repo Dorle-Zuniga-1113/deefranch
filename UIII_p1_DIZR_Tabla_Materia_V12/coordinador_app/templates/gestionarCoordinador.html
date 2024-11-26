@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+
+{% block cuerpo %}
+
+<div class="row"><!-- la fila -->
+<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+
+<h1> mama</h1>
+    <div class="card">
+        <div class="card-body">
+            <form action="registrarCoordi/" method="POST">{% csrf_token %}  <!--falta accion-->
+                <div class="form-group">
+                    <input type="text" id="txtcod" name="txtcod" class="form-control" placeholder="codigo coordinador" minlenght="6" maxLenght="6" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtnombre" name="txtnombre"class="form-control" placeholder="nombre coordinador"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtzona" name="txtzona"class="form-control" placeholder="zona"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtdire" name="txtdire" class="form-control" placeholder="direccion"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtapell" name="txtapell" class="form-control" placeholder="apellidos"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="numsueldo" name="numsueldo" class="form-control" placeholder="saldo"   maxLenght="100" required>
+                </div>
+                
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">guardar coordinador</button>
+                </div>
+            </form>
+        
+        </div>
+    </div><!--la tarjeta-->
+
+</div><!-- columna izquierda --> 
+
+<div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!--columna derecha-->
+    <h1> 
+        listado de coordinadores
+    </h1>
+    <!--  la tabla   -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">codigo</th>
+                <th scope="col">nombre</th>
+                <th scope="col">zona</th>
+                <th scope="col">direccion</th>
+                <th scope="col">apellidos</th>
+                <th scope="col">sueldo</th>
+                <th>opciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for m in loscoordis %}
+            <tr>
+                <td>
+                {{forloop.counter}}</td>
+                <td>{{m.codigo}}  </td>
+                <td>{{m.nombre}}  </td>
+                <td>{{m.zona}}  </td>
+                <td>{{m.direccion}}  </td>
+                <td>{{m.apellidos}}  </td>
+                <td>{{m.sueldo}}  </td>
+                <td><a href="SeleccionarCoordi/{{m.codigo}}" class="btn btn-info">editar</a></td><!--falta codigo-->
+                <td><a href="BorrarCoordi/{{m.codigo}}" class="btn btn-danger">borrar</a></td>
+            </tr>
+            
+            {% endfor %}
+            </tbody>
+        </table>
+        <!--  la tabla   -->
+    <div><!--columna derecha-->
+    </div><!-- la fila -->
+{% endblock %}
